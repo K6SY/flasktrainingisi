@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-light" role="alert">
+                <h1>Supermarché {{titre}}</h1>
+            </div>
+        </div>
+        {% for produit,description in mesproduits.items() %}
+            {% if produit not in ("banane","poire")%}
+                <div class="col-md-2">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{url_for('static', filename='images/')}}{{produit}}.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{produit}}</h5>
+                            <p class="card-text">{{description}}</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            {%endif%}
+        {%endfor%}
+    </div>
+</div>  
+{%endblock%}
